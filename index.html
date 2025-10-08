@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Quiz App — Optimized</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>body{font-family:'Kanit',system-ui,sans-serif}</style>
+</head>
+<body>
+  <header class="topbar">
+    <h1>Quiz App — Optimized</h1>
+    <div class="perf">
+      <span id="avgLoad">⏱ avg: –</span>
+      <span id="cacheHit">📦 hit: –</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="row">
+        <label>ทักษะ (skill): <input id="skillSel" placeholder="reading_basic / spelling_basic" /></label>
+        <label>ระดับ (difficulty): 
+          <select id="diffSel">
+            <option value="">auto</option>
+            <option value="1">ง่าย</option>
+            <option value="2">กลาง</option>
+            <option value="3">ยาก</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="btnStart">เริ่มทำแบบทดสอบ</button>
+        <div class="progress-wrap">
+          <div class="progress" id="preloadProgress" style="width:0%"></div>
+        </div>
+        <div id="retryNote" class="retry-note" hidden>กำลังลองใหม่…</div>
+      </div>
+    </section>
+
+    <section id="quizCard" class="card skeleton">
+      <div class="q-meta">
+        <span id="qidView">QID: –</span>
+        <span id="typeView">ชนิด: –</span>
+        <span id="skillView">ทักษะ: –</span>
+        <span id="diffView">ระดับ: –</span>
+      </div>
+      <div id="promptView" class="prompt">กำลังโหลดคำถาม…</div>
+      <ol id="choicesView" class="choices"></ol>
+      <div class="row">
+        <input id="answerInput" class="hidden" placeholder="พิมพ์คำตอบ" />
+      </div>
+      <div class="row">
+        <button id="btnPrev" class="secondary">ก่อนหน้า</button>
+        <button id="btnNext" class="primary">ถัดไป</button>
+        <button id="btnCheck" class="accent">ตรวจคำตอบ</button>
+      </div>
+      <div id="toast" class="toast" hidden></div>
+    </section>
+  </main>
+
+  <script>
+    // ---------- Config แก้ URL ให้ชี้ไปยัง Apps Script ของพี่ที่รัก ----------
+    const API_BASE = (window.APP_API_BASE || 'https://script.google.com/macros/s/REPLACE_WITH_DEPLOYMENT_ID/exec');
+  </script>
+  <script src="./app.js"></script>
+</body>
+</html>
